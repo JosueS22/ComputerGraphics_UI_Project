@@ -17,7 +17,7 @@ clock = pygame.time.Clock()
 width = screen.get_width()
 height = screen.get_height()
 
-def message_to_screen(msg, color, x, y, size = 35, font = 0):
+def text_to_screen(msg, color, x, y, size = 35, font = 0):
         font0 = pygame.font.SysFont('Corbel', size)
         font1 = pygame.font.SysFont('Arial', size)
         fonts = [font0, font1]
@@ -54,10 +54,10 @@ def pause():
             continue_text = 'Continue'
             quit_text = 'Quit'
 
-            message_to_screen(pause_text, WHITE, width/2 - 45, height/4, 50)
-            message_to_screen(pause2_text, WHITE, width/2 -250, height/4 + 60, 25)
-            message_to_screen(continue_text, WHITE, width/2 - 50, height/2)
-            message_to_screen(quit_text, WHITE, width/2 - 20, height/2 + 50)
+            text_to_screen(pause_text, WHITE, width/2 - 45, height/4, 50)
+            text_to_screen(pause2_text, WHITE, width/2 -250, height/4 + 60, 25)
+            text_to_screen(continue_text, WHITE, width/2 - 50, height/2)
+            text_to_screen(quit_text, WHITE, width/2 - 20, height/2 + 50)
             
             pygame.display.update()
 
@@ -99,10 +99,10 @@ def gameLoop():
             menu_text2 = 'Presione START para iniciar o QUIT para salir.'
             start_text = 'Start'
             quit_text = 'Quit'
-            message_to_screen(menu_text, WHITE, width/2-40, height/2-100)
-            message_to_screen(menu_text2, WHITE, width/2 - 200, height/2 - 50, 25)
-            message_to_screen(start_text, WHITE, width/2, height/2)
-            message_to_screen(quit_text, WHITE, width/2, height/2+50)
+            text_to_screen(menu_text, WHITE, width/2-40, height/2-100)
+            text_to_screen(menu_text2, WHITE, width/2 - 200, height/2 - 50, 25)
+            text_to_screen(start_text, WHITE, width/2, height/2)
+            text_to_screen(quit_text, WHITE, width/2, height/2+50)
 
             pygame.display.update()
             
@@ -186,8 +186,8 @@ def gameLoop():
         screen.blit(updateFPS(), (0,0))
 
         # Main menu pause
-        screen.fill(pygame.Color("black"), (880,0,120,30))
-        message_to_screen('p to pause',WHITE,880,0,25)
+        screen.fill(pygame.Color("dodgerblue4"), (880,0,120,30))
+        text_to_screen('p to pause',WHITE,885,0,25)
 
         clock.tick(30)  
         pygame.display.update()
