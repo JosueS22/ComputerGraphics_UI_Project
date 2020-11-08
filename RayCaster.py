@@ -1,7 +1,15 @@
 import pygame
+from pygame import mixer
 from gl import *
 
 pygame.init()
+
+# Background Music
+mixer.init()
+mixer.music.load('background.mp3')
+mixer.music.set_volume(1)
+mixer.music.play()
+
 screen = pygame.display.set_mode((1000,500), pygame.DOUBLEBUF | pygame.HWACCEL) #, pygame.FULLSCREEN)
 screen.set_alpha(None)
 clock = pygame.time.Clock()
@@ -20,13 +28,16 @@ def pause():
 
         paused = True
         while paused:
+            mixer.music.pause()
             for ev in pygame.event.get():
                 if ev.type == pygame.QUIT:
+                    mixer.music.stop()
                     pygame.quit()
                     quit()
 
                 if ev.type == pygame.MOUSEBUTTONDOWN:
                     if width/2-55 <= mouse[0] <= width/2+85 and height/2-5 <= mouse[1] <= height/2+35:
+                        mixer.music.unpause()
                         paused = False
                 
                     elif width/2-25 <= mouse[0] <= width/2+55 and height/2+45 <= mouse[1] <= height/2+95:
@@ -35,6 +46,7 @@ def pause():
 
                 if ev.type == pygame.KEYDOWN:
                     if ev.key == pygame.K_p:
+                        mixer.music.unpause()
                         paused = False
 
             pause_text = 'Pausa'
